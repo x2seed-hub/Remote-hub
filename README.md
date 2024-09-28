@@ -8050,111 +8050,111 @@ elseif game.PlaceId == 4520749081 or game.PlaceId == 6381829480 or game.PlaceId 
         StopNoClip(_G.AutoFarm)
     end)
     
-    local LocalPlayer = game:GetService("Players").LocalPlayer
-    local VirtualUser = game:GetService('VirtualUser')
-    spawn(function()
-        while wait() do
-            if _G.AutoFarm then
-                pcall(function()
-                    CheckQuest()
-                    if game:GetService("Players").LocalPlayer.PlayerGui.Quest.QuestBoard.Visible == false then
-                        if not game:GetService("Workspace").AntiTPNPC:FindFirstChild("QuestLvl"..LevelQuest) then
-                            TP(game:GetService("ReplicatedStorage").MAP["QuestLvl"..LevelQuest].HumanoidRootPart.CFrame * CFrame.new(0,0,-3))
-                        else 
-                            TP(game:GetService("Workspace").AntiTPNPC["QuestLvl"..LevelQuest].HumanoidRootPart.CFrame * CFrame.new(0,0,-3))
-                        end
-                        Click()
-                        wait(.5)
-                        for i,v in pairs(game.Players.LocalPlayer.PlayerGui:GetDescendants()) do
-                            if v.Name == "Dialogue" then
-                                v.Accept.Size = UDim2.new(0, 10000, 0, 10000)
-                                v.Accept.Position = UDim2.new(-2, 0, -5, 0)
-                                v.Accept.ImageTransparency = 1
-                                game:GetService("ReplicatedStorage").Remotes.Functions.CheckQuest:InvokeServer()
-                            end
-                        end
-                    elseif game:GetService("Players").LocalPlayer.PlayerGui.Quest.QuestBoard.Visible == true then
-                        Mon = string.sub(game:GetService("Players").LocalPlayer.PlayerGui.Quest.QuestBoard.QuestCount.Text,5,#game:GetService("Players").LocalPlayer.PlayerGui.Quest.QuestBoard.QuestCount.Text)
-                        if game:GetService("Workspace").Monster.Mon:FindFirstChild(Mon) then
-                            for i,v in pairs(game:GetService("Workspace").Monster.Mon:GetChildren()) do
-                                if v.Name == Mon then
-                                    if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                        repeat task.wait()
-                                            AutoHaki()
-                                            EquipWeapon(_G.SelectWeapon)
-                                            VirtualUser:CaptureController()
-                                            VirtualUser:ClickButton1(Vector2.new(1280, 672))
-                                            TP(v.HumanoidRootPart.CFrame * MethodFarm)
-                                            if _G.AutoSkill then 
-                                                UseSkill("Z")
-                                                UseSkill("X")
-                                                UseSkill("C")
-                                                UseSkill("V")
-                                            end
-                                        until not v.Parent or v.Humanoid.Health <= 0 or _G.AutoFarm == false or game:GetService("Players").LocalPlayer.PlayerGui.Quest.QuestBoard.Visible == false
-                                    else
-                                        UseSkill("E")
-                                        if Second_Sea and game.Players.LocalPlayer.PlayerStats.lvl.Value >= 3275 then
-                                            TP(CFrame.new(30272.3203125, 65.4236068725586, 93207.0234375))
-                                        else
-                                            if not game:GetService("Workspace").AntiTPNPC:FindFirstChild("QuestLvl"..LevelQuest) then
-                                                TP(game:GetService("ReplicatedStorage").MAP["QuestLvl"..LevelQuest].HumanoidRootPart.CFrame * CFrame.new(0,500,0))
-                                            else 
-                                                TP(game:GetService("Workspace").AntiTPNPC["QuestLvl"..LevelQuest].HumanoidRootPart.CFrame * CFrame.new(0,500,0))
-                                            end
-                                        end
-                                    end
-                                end
-                            end
-                        elseif game:GetService("Workspace").Monster.Boss:FindFirstChild(Mon) then
-                            for i,v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
-                                if v.Name == Mon then
-                                    if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                        repeat task.wait()
-                                            AutoHaki()
-                                            EquipWeapon(_G.SelectWeapon)
-                                            VirtualUser:CaptureController()
-                                            VirtualUser:ClickButton1(Vector2.new(1280, 672))
-                                            TP(v.HumanoidRootPart.CFrame * MethodFarm)
-                                            if _G.AutoSkill then 
-                                                UseSkill("Z")
-                                                UseSkill("X")
-                                                UseSkill("C")
-                                                UseSkill("V")
-                                            end
-                                        until not v.Parent or v.Humanoid.Health <= 0 or _G.AutoFarm == false or game:GetService("Players").LocalPlayer.PlayerGui.Quest.QuestBoard.Visible == false
-                                    else
-                                        UseSkill("E")
-                                        if Second_Sea and game.Players.LocalPlayer.PlayerStats.lvl.Value >= 3275 then
-                                            TP(CFrame.new(30272.3203125, 65.4236068725586, 93207.0234375))
-                                        else
-                                            if not game:GetService("Workspace").AntiTPNPC:FindFirstChild("QuestLvl"..LevelQuest) then
-                                                TP(game:GetService("ReplicatedStorage").MAP["QuestLvl"..LevelQuest].HumanoidRootPart.CFrame * CFrame.new(0,500,0))
-                                            else 
-                                                TP(game:GetService("Workspace").AntiTPNPC["QuestLvl"..LevelQuest].HumanoidRootPart.CFrame * CFrame.new(0,500,0))
-                                            end
-                                        end
-                                    end
-                                end
-                            end
-                        else 
-                            UseSkill("E")
-                            if Second_Sea and game.Players.LocalPlayer.PlayerStats.lvl.Value >= 3275 then
-                                TP(CFrame.new(30272.3203125, 65.4236068725586, 93207.0234375))
-                            else
-                                if not game:GetService("Workspace").AntiTPNPC:FindFirstChild("QuestLvl"..LevelQuest) then
-                                    TP(game:GetService("ReplicatedStorage").MAP["QuestLvl"..LevelQuest].HumanoidRootPart.CFrame * CFrame.new(0,500,0))
-                                else 
-                                    TP(game:GetService("Workspace").AntiTPNPC["QuestLvl"..LevelQuest].HumanoidRootPart.CFrame * CFrame.new(0,500,0))
-                                end
-                            end
-                        end
-                    end
-                end)
-            end
-        end
-    end)
-    
+      local LocalPlayer = game:GetService("Players").LocalPlayer
+      local VirtualUser = game:GetService('VirtualUser')
+      spawn(function()
+          while wait() do
+              if _G.AutoFarm then
+                  pcall(function()
+                      CheckQuest()
+                      if game:GetService("Players").LocalPlayer.PlayerGui.Quest.QuestBoard.Visible == false then
+                          if not game:GetService("Workspace").AntiTPNPC:FindFirstChild("QuestLvl"..LevelQuest) then
+                              TP(game:GetService("ReplicatedStorage").MAP["QuestLvl"..LevelQuest].HumanoidRootPart.CFrame * CFrame.new(0,0,-3))
+                          else 
+                              TP(game:GetService("Workspace").AntiTPNPC["QuestLvl"..LevelQuest].HumanoidRootPart.CFrame * CFrame.new(0,0,-3))
+                          end
+                          Click()
+                          wait(.5)
+                          for i,v in pairs(game.Players.LocalPlayer.PlayerGui:GetDescendants()) do
+                              if v.Name == "Dialogue" then
+                                  v.Accept.Size = UDim2.new(0, 10000, 0, 10000)
+                                  v.Accept.Position = UDim2.new(-2, 0, -5, 0)
+                                  v.Accept.ImageTransparency = 1
+                                  game:GetService("ReplicatedStorage").Remotes.Functions.CheckQuest:InvokeServer()
+                              end
+                          end
+                      elseif game:GetService("Players").LocalPlayer.PlayerGui.Quest.QuestBoard.Visible == true then
+                          Mon = string.sub(game:GetService("Players").LocalPlayer.PlayerGui.Quest.QuestBoard.QuestCount.Text,5,#game:GetService("Players").LocalPlayer.PlayerGui.Quest.QuestBoard.QuestCount.Text)
+                          if game:GetService("Workspace").Monster.Mon:FindFirstChild(Mon) then
+                              for i,v in pairs(game:GetService("Workspace").Monster.Mon:GetChildren()) do
+                                  if v.Name == Mon then
+                                      if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                          repeat task.wait()
+                                              AutoHaki()
+                                              EquipWeapon(_G.SelectWeapon)
+                                              VirtualUser:CaptureController()
+                                              VirtualUser:ClickButton1(Vector2.new(1280, 672))
+                                              TP(v.HumanoidRootPart.CFrame * MethodFarm)
+                                              if _G.AutoSkill then 
+                                                  UseSkill("Z")
+                                                  UseSkill("X")
+                                                  UseSkill("C")
+                                                  UseSkill("V")
+                                              end
+                                          until not v.Parent or v.Humanoid.Health <= 0 or _G.AutoFarm == false or game:GetService("Players").LocalPlayer.PlayerGui.Quest.QuestBoard.Visible == false
+                                      else
+                                          UseSkill("E")
+                                          if Second_Sea and game.Players.LocalPlayer.PlayerStats.lvl.Value >= 3275 then
+                                              TP(CFrame.new(30272.3203125, 65.4236068725586, 93207.0234375))
+                                          else
+                                              if not game:GetService("Workspace").AntiTPNPC:FindFirstChild("QuestLvl"..LevelQuest) then
+                                                  TP(game:GetService("ReplicatedStorage").MAP["QuestLvl"..LevelQuest].HumanoidRootPart.CFrame * CFrame.new(0,500,0))
+                                              else 
+                                                  TP(game:GetService("Workspace").AntiTPNPC["QuestLvl"..LevelQuest].HumanoidRootPart.CFrame * CFrame.new(0,500,0))
+                                              end
+                                          end
+                                      end
+                                  end
+                              end
+                          elseif game:GetService("Workspace").Monster.Boss:FindFirstChild(Mon) then
+                              for i,v in pairs(game:GetService("Workspace").Monster.Boss:GetChildren()) do
+                                  if v.Name == Mon then
+                                      if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                          repeat task.wait()
+                                              AutoHaki()
+                                              EquipWeapon(_G.SelectWeapon)
+                                              VirtualUser:CaptureController()
+                                              VirtualUser:ClickButton1(Vector2.new(1280, 672))
+                                              TP(v.HumanoidRootPart.CFrame * MethodFarm)
+                                              if _G.AutoSkill then 
+                                                  UseSkill("Z")
+                                                  UseSkill("X")
+                                                  UseSkill("C")
+                                                  UseSkill("V")
+                                              end
+                                          until not v.Parent or v.Humanoid.Health <= 0 or _G.AutoFarm == false or game:GetService("Players").LocalPlayer.PlayerGui.Quest.QuestBoard.Visible == false
+                                      else
+                                          UseSkill("E")
+                                          if Second_Sea and game.Players.LocalPlayer.PlayerStats.lvl.Value >= 3275 then
+                                              TP(CFrame.new(30272.3203125, 65.4236068725586, 93207.0234375))
+                                          else
+                                              if not game:GetService("Workspace").AntiTPNPC:FindFirstChild("QuestLvl"..LevelQuest) then
+                                                  TP(game:GetService("ReplicatedStorage").MAP["QuestLvl"..LevelQuest].HumanoidRootPart.CFrame * CFrame.new(0,500,0))
+                                              else 
+                                                  TP(game:GetService("Workspace").AntiTPNPC["QuestLvl"..LevelQuest].HumanoidRootPart.CFrame * CFrame.new(0,500,0))
+                                              end
+                                          end
+                                      end
+                                  end
+                              end
+                          else 
+                              UseSkill("E")
+                              if Second_Sea and game.Players.LocalPlayer.PlayerStats.lvl.Value >= 3275 then
+                                  TP(CFrame.new(30272.3203125, 65.4236068725586, 93207.0234375))
+                              else
+                                  if not game:GetService("Workspace").AntiTPNPC:FindFirstChild("QuestLvl"..LevelQuest) then
+                                      TP(game:GetService("ReplicatedStorage").MAP["QuestLvl"..LevelQuest].HumanoidRootPart.CFrame * CFrame.new(0,500,0))
+                                  else 
+                                      TP(game:GetService("Workspace").AntiTPNPC["QuestLvl"..LevelQuest].HumanoidRootPart.CFrame * CFrame.new(0,500,0))
+                                  end
+                              end
+                          end
+                      end
+                  end)
+              end
+          end
+      end)
+      
     Main:AddToggle("Auto Second Sea",_G.AutoSecondSea,function(value)
         _G.AutoSecondSea = value
     end)
